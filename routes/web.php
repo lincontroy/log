@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 
    // more route definitions
 
-   Route::get('/banklogs/{code}', [App\Http\Controllers\BanklogsController::class, 'index'])->name('index');
+   Route::get('/banklogs/{id}', [App\Http\Controllers\BanklogsController::class, 'index'])->name('index');
+
+   
 
 });

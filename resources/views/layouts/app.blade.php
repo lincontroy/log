@@ -11,21 +11,21 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- jsvectormap css -->
-    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!--Swiper slider css-->
-    <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- Layout config Js -->
-    <script src="assets/js/layout.js"></script>
+    <script src="{{url('assets/js/layout.js')}}"></script>
     <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -42,10 +42,10 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-dark.png" alt="" height="17">
+                            <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
                         </span>
                     </a>
 
@@ -117,7 +117,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="assets/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <img src="{{url('assets/images/users/avatar-2.jpg')}}" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="m-0">Angela Bernier</h6>
                                             <span class="fs-11 mb-0 text-muted">Manager</span>
@@ -309,7 +309,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="user.png" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="{{url('user.png')}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::user()->name}}</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text"></span>
@@ -409,7 +409,14 @@
                             ?>
                                 @foreach($banklogs as $banklog)
                                     <li class="nav-item">
-                                        <a href="{{url('/banklogs')}}/{{$banklog->code}}" class="nav-link" data-key="t-calendar"> {{$banklog->bank}} </a>
+                                        <a href="{{url('/banklogs')}}/{{$banklog->id}}" class="nav-link" data-key="t-calendar"> 
+                                            <?php
+                                            $name=App\Models\Banks::where('id',$banklog->bank)->get('name');
+
+                                            echo $name[0]['name'];
+                                        
+                                        ?>
+                                    </a>
                                     </li>
 
                                 @endforeach
@@ -1889,27 +1896,27 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="{{url('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{url('assets/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{url('assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{url('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{url('assets/js/plugins.js')}}"></script>
 
     <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="{{url('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
 
     <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+    <script src="{{url('assets/libs/jsvectormap/js/jsvectormap.min.js')}}"></script>
+    <script src="{{url('assets/libs/jsvectormap/maps/world-merc.js')}}"></script>
 
     <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script src="{{url('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
 
     <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+    <script src="{{url('assets/js/pages/dashboard-ecommerce.init.js')}}"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.js"></script>
+    <script src="{{url('assets/js/app.js')}}"></script>
 </body>
 </html>

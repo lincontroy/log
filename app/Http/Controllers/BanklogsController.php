@@ -16,7 +16,12 @@ class BanklogsController extends Controller
     {
         //
 
-        $banklogs=Banklogs::where('code',$request->code)->get();
+        $banklogs=Banklogs::where('id',$request->id)->get();
+
+        // return $banklogs;
+
+
+
 
 
         return view('banklogs')->with(compact('banklogs'));
