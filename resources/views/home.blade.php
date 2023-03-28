@@ -26,7 +26,7 @@
                                     </div>
                                     <!--end col-->
                                     <div class="col-auto">
-                                        <button type="button" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> Add Funds</button>
+                                        <a href="{{url('deposit')}}" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> Add Funds</a>
                                     </div>
                                     <!--end col-->
                                     <div class="col-auto">
@@ -116,7 +116,10 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="0"></span></h4>
+                                <?php
+                                $banklogs=App\Models\Banklogs::count();
+                                ?>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$banklogs}}"></span></h4>
                                     
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -145,7 +148,10 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="0"></span></h4>
+                                    <?php
+                                    $totalcards=App\Models\Cards::count();?>
+                                 
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$totalcards}}"></span></h4>
                                     
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">

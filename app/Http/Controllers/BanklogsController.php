@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banklogs;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class BanklogsController extends Controller
 {
@@ -12,6 +14,47 @@ class BanklogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function buylogs(Request $request)
+    {
+
+        $id=$request->id;
+
+        //in the database select the log that suits the $request->id
+        $banklogs=Banklogs::where('type',$id)->get('price');
+
+        $price=$banklogs[0]['price'];
+
+        //check if the authenticated user has the amount in his wallet
+
+        $wallet=Auth::user()->wallet;
+
+        if($wallet>=$price){
+
+            //deduct the amount from the user
+            $newamount=$wallet-$price;
+
+            $update=User::where('id',Auth::user()->id)->update(['wallet'=>$newamount]);
+
+            //add the information to the orders table
+
+            toastr()->success('Purchase was successful check your secure email for details!');
+
+            
+            return redirect()->back();
+
+            //show the user succeess that the purchase was successful
+
+        }else{
+
+            toastr()->error('You have insufficent balance!');
+
+            
+            return redirect('/deposit');
+            //tell the user that the purchase was not successful
+        }
+
+
+    }
     public function index(Request $request)
     {
         //
